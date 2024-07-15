@@ -9,10 +9,13 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 10f; // Jump force
     public float groundDistance = 0.2f; // Distance to check for the ground
     public LayerMask groundMask; // Layer mask to specify what is ground
-    [SerializeField] public float speed = 3f; // Movement speed
-    
+    public float speed = 0.1f; // Movement speed
     private Rigidbody rb; // Reference to the Rigidbody component
     private bool isGrounded; // Is the player grounded
+    public float dashDistance = 5f;
+    public float dashSpeed = 12f;
+    public float dashLength = 0.5f; //dash time
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +26,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         //isGrounded = Physics.CheckSphere(transform.position, groundDistance, groundMask);
-        print(isGrounded);
+        //print(isGrounded);
     
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
@@ -60,7 +63,32 @@ public class PlayerController : MonoBehaviour
             }
             isGrounded =false;
         }
+        
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            StartCoroutine(Dash());
+        }
 
+    }
+
+    IEnumerator Dash()
+    {
+        // Vector3 dashDirection = player.forward;   if we vant to dash any vertical distance umcomment this line and comment the line below
+        Vector3 dashDirection = new Vector3(player.forward.x, 0, player.forward.z).normalized;
+
+        // Store the initial velocity
+        Vector3 initialVelocity = rb.velocity;
+
+        float dashEndTime = Time.time + dashLength;
+        while (Time.time < dashEndTime)
+        {
+            rb.velocity = dashDirection * dashSpeed;
+            yield return null;
+        }
+
+        // Restore initial velocity after dash
+        rb.velocity = initialVelocity;
+        
     }
     void OnCollisionExit(Collision collision)
     {
