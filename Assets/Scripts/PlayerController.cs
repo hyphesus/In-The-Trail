@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 3f; // Jump force
     public float groundDistance = 0.2f; // Distance to check for the ground
     public LayerMask groundMask; // Layer mask to specify what is ground
-    [SerializeField] public float speed = 0.02f; // Movement speed
+    [SerializeField] public float speed = 3f; // Movement speed
     
     private Rigidbody rb; // Reference to the Rigidbody component
     private bool isGrounded; // Is the player grounded
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     {
 
         isGrounded = Physics.CheckSphere(transform.position, groundDistance, groundMask);
-
+        print(isGrounded);
     
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
@@ -43,12 +43,24 @@ public class PlayerController : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
             // Move the player
-            transform.Translate(moveDir.normalized * speed, Space.World);
+            //transform.Translate(moveDir.normalized * speed, Space.World);
+            rb.MovePosition(transform.position + moveDir.normalized * speed );
         }
 
-        if (Input.GetKeyDown("space") && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+
+    }
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Item")){
+            rb.velocity = Vector3.zero;
+        }
+    }
+    void OnCollisionStay(Collision collision) {
+        if (collision.gameObject.CompareTag("Terrain")){
         }
     }
 }
