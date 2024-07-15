@@ -12,9 +12,10 @@ public class PlayerController : MonoBehaviour
     public float speed = 0.1f; // Movement speed
     private Rigidbody rb; // Reference to the Rigidbody component
     private bool isGrounded; // Is the player grounded
+    private bool isDashing; // Is the player dashing
     public float dashDistance = 5f;
     public float dashSpeed = 12f;
-    public float dashLength = 0.5f; //dash time
+    public float dashDuration = 0.5f; //dash time
 
 
     // Start is called before the first frame update
@@ -64,31 +65,56 @@ public class PlayerController : MonoBehaviour
             isGrounded =false;
         }
         
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing)
         {
-            StartCoroutine(Dash());
+            // Check combinations of keys for dash direction
+            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+            {
+                StartCoroutine(Dash(player.forward + player.right)); // Right-Forward
+            }
+            else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+            {
+                StartCoroutine(Dash(player.forward - player.right)); // Left-Forward
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+                StartCoroutine(Dash(player.right)); // Just Right
+            }
+            else if (Input.GetKey(KeyCode.A))
+            {
+                StartCoroutine(Dash(-player.right)); // Just Left
+            }
+            else
+            {
+                StartCoroutine(Dash(player.forward)); // Just Forward
+            }
         }
 
     }
 
-    IEnumerator Dash()
+    IEnumerator Dash(Vector3 direction)
     {
-        // Vector3 dashDirection = player.forward;   if we vant to dash any vertical distance umcomment this line and comment the line below
-        Vector3 dashDirection = new Vector3(player.forward.x, 0, player.forward.z).normalized;
+        isDashing = true;
+
+        // Normalize the direction to ensure it only affects X and Z axis
+        direction = new Vector3(direction.x, 0, direction.z).normalized;
 
         // Store the initial velocity
         Vector3 initialVelocity = rb.velocity;
 
-        float dashEndTime = Time.time + dashLength;
+        // Apply a high force for the duration of the dash
+        float dashEndTime = Time.time + dashDuration;
         while (Time.time < dashEndTime)
         {
-            rb.velocity = dashDirection * dashSpeed;
+            rb.velocity = direction * dashSpeed;
             yield return null;
         }
 
         // Restore initial velocity after dash
         rb.velocity = initialVelocity;
-        
+
+        // Stop dashing
+        isDashing = false;
     }
     void OnCollisionExit(Collision collision)
     {
