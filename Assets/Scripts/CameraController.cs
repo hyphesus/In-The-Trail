@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
 
     public Transform player;
-
+    public Transform cameraTransform;
     public float cam_sensitivity = 2f;
 
     private float camera_vertical_rot = 0f;
@@ -26,8 +26,12 @@ public class CameraController : MonoBehaviour
         camera_vertical_rot -= inputY;
         camera_vertical_rot = Mathf.Clamp(camera_vertical_rot, -80f, 80f);
         transform.localEulerAngles = Vector3.right*camera_vertical_rot;
+        
 
         camera_horizontal_rot += inputX;
-        transform.eulerAngles = new Vector3(camera_vertical_rot, camera_horizontal_rot, 0.0f);
+
+        player.eulerAngles = new Vector3(0, camera_horizontal_rot, 0);
+
+        cameraTransform.eulerAngles = new Vector3(camera_vertical_rot, camera_horizontal_rot, 0.0f);
     }
 }
