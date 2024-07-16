@@ -18,7 +18,8 @@ public class PlayerController : MonoBehaviour
     public float dashDistance = 5f;
     public float dashSpeed = 12f;
     public float dashDuration = 0.5f; //dash time
-    private Vector3 backPedal = new Vector3(0.1f, 0f, 0.1f);
+    public LayerMask collisionMask;
+    public float cameraDistance = 0.35f;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,8 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         //isGrounded = Physics.CheckSphere(transform.position, groundDistance, groundMask);
-        print(isGrounded);
+        //print(isGrounded);
+
         if(!isDashing){
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
@@ -100,7 +102,7 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(Dash(player.forward)); // Just Forward
             }
         }
-
+        AdjustCameraPosition();
     }
 
     IEnumerator Dash(Vector3 direction)
@@ -127,11 +129,21 @@ public class PlayerController : MonoBehaviour
         // Stop dashing
         isDashing = false;
     }
+    void AdjustCameraPosition()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(rb.position, player.forward, out hit, cameraDistance, collisionMask))
+        {
+            print("ray cast hit");
+            rb.MovePosition(rb.position - player.forward * cameraDistance); // Adjust to a small offset from the hit point
+        }
+    }
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Item")){
             rb.velocity = Vector3.zero;
-            rb.position = rb.position - player.forward*0.5f;
+            
         }
         else if (collision.gameObject.CompareTag("Terrain")){
             isGrounded=true;
