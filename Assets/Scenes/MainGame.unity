@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.1755819, g: 0.21970204, b: 0.3020268, a: 1}
+  m_IndirectSpecularColor: {r: 0.17558154, g: 0.21970147, b: 0.3020255, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -880,7 +880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkingAudio: {fileID: 8300000, guid: 3f937ee8e32e5da4ba1eccbd66cf2137, type: 3}
   playerController: {fileID: 333799283}
-  volume: 1
+  volume: 0.1
 --- !u!114 &333799283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1954,7 +1954,7 @@ Transform:
   m_GameObject: {fileID: 537650612}
   serializedVersion: 2
   m_LocalRotation: {x: 0.015009957, y: 0.82457304, z: -0.5599211, w: 0.07963982}
-  m_LocalPosition: {x: -3.63, y: 3.73, z: -3.6}
+  m_LocalPosition: {x: -3.63, y: 4, z: -3.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1973,7 +1973,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 12
-  m_Range: 10
+  m_Range: 9
   m_SpotAngle: 25
   m_InnerSpotAngle: 2
   m_CookieSize: 10
