@@ -192,8 +192,16 @@ PrefabInstance:
       value: hub (3)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 19c855fcca1db4e648e19add15a5e01b, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 19c855fcca1db4e648e19add15a5e01b, type: 3}
       propertyPath: m_TagString
       value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 19c855fcca1db4e648e19add15a5e01b, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -742,12 +750,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 388479345}
-  jumpForce: 6
+  jumpForce: 8
   groundDistance: 0.2
   groundMask:
     serializedVersion: 2
     m_Bits: 8
-  speed: 0.02
+  speed: 0.06
   isDashing: 0
   isMoving: 0
   dashDistance: 5
@@ -755,7 +763,7 @@ MonoBehaviour:
   dashDuration: 0.5
   collisionMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8
   cameraDistance: 0.35
 --- !u!4 &333799284
 Transform:
@@ -842,8 +850,16 @@ PrefabInstance:
       value: hub (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 19c855fcca1db4e648e19add15a5e01b, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 19c855fcca1db4e648e19add15a5e01b, type: 3}
       propertyPath: m_TagString
       value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 19c855fcca1db4e648e19add15a5e01b, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1265,8 +1281,16 @@ PrefabInstance:
       value: hub (2)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 19c855fcca1db4e648e19add15a5e01b, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 19c855fcca1db4e648e19add15a5e01b, type: 3}
       propertyPath: m_TagString
       value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 19c855fcca1db4e648e19add15a5e01b, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7244,8 +7268,16 @@ PrefabInstance:
       value: hub
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 19c855fcca1db4e648e19add15a5e01b, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 19c855fcca1db4e648e19add15a5e01b, type: 3}
       propertyPath: m_TagString
       value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 19c855fcca1db4e648e19add15a5e01b, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
