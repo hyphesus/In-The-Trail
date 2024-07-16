@@ -6,10 +6,10 @@ public class PlayerController : MonoBehaviour
 {
 
     public Transform player; // Reference to the camera's transform
-    public float jumpForce = 10f; // Jump force
+    public float jumpForce = 5f; // Jump force
     public float groundDistance = 0.2f; // Distance to check for the ground
     public LayerMask groundMask; // Layer mask to specify what is ground
-    public float speed = 0.1f; // Movement speed
+    public float speed = 0.06f; // Movement speed
     private Rigidbody rb; // Reference to the Rigidbody component
     private bool isGrounded; // Is the player grounded
     public bool isDashing; // Is the player dashing
