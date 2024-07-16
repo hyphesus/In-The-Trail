@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 0.1f; // Movement speed
     private Rigidbody rb; // Reference to the Rigidbody component
     private bool isGrounded; // Is the player grounded
-    private bool isDashing; // Is the player dashing
+    public bool isDashing; // Is the player dashing
     
     public bool isMoving;
     public float dashDistance = 5f;
