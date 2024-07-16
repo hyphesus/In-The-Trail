@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17558154, g: 0.21970147, b: 0.3020255, a: 1}
+  m_IndirectSpecularColor: {r: 0.1755819, g: 0.21970204, b: 0.3020268, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -491,7 +491,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0.1}
+  m_LocalScale: {x: 0.2, y: 1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1158773145}
@@ -1835,6 +1835,7 @@ GameObject:
   - component: {fileID: 1158773145}
   - component: {fileID: 1158773144}
   - component: {fileID: 1158773143}
+  - component: {fileID: 1158773146}
   - component: {fileID: 1158773142}
   - component: {fileID: 1158773141}
   m_Layer: 0
@@ -1911,6 +1912,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   speed: 0.1
+  isMoving: 0
   dashDistance: 5
   dashSpeed: 12
   dashDuration: 0.5
@@ -1937,7 +1939,7 @@ Transform:
   m_GameObject: {fileID: 1158773140}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 18.056, z: 1.141}
+  m_LocalPosition: {x: 4.3, y: 15.68, z: 8.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1945,6 +1947,20 @@ Transform:
   - {fileID: 1836289060}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1158773146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158773140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf38ee06e537974388174852a3b125a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkingAudio: {fileID: 8300000, guid: 3f937ee8e32e5da4ba1eccbd66cf2137, type: 3}
+  playerController: {fileID: 1158773143}
 --- !u!1 &1189129312 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 19c855fcca1db4e648e19add15a5e01b, type: 3}
@@ -2274,7 +2290,7 @@ Transform:
   m_GameObject: {fileID: 1836289059}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.57, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb; // Reference to the Rigidbody component
     private bool isGrounded; // Is the player grounded
     private bool isDashing; // Is the player dashing
+    
+    public bool isMoving;
     public float dashDistance = 5f;
     public float dashSpeed = 12f;
     public float dashDuration = 0.5f; //dash time
@@ -28,24 +30,33 @@ public class PlayerController : MonoBehaviour
     {
         //isGrounded = Physics.CheckSphere(transform.position, groundDistance, groundMask);
         //print(isGrounded);
+        if(!isDashing){
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+
+            // Combine the inputs to create a direction vector
+            Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+            
+            if (direction.magnitude >= 0.1f)
+            {
+                // Calculate the angle to rotate the player based on the camera's rotation
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + player.eulerAngles.y;
     
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+                Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-        // Combine the inputs to create a direction vector
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-        
-        if (direction.magnitude >= 0.1f)
-        {
-            // Calculate the angle to rotate the player based on the camera's rotation
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + player.eulerAngles.y;
- 
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-
-            // Move the player
-            //transform.Translate(moveDir.normalized * speed, Space.World);
-            rb.MovePosition(transform.position + moveDir.normalized * speed );
+                // Move the player
+                //transform.Translate(moveDir.normalized * speed, Space.World);
+                rb.MovePosition(transform.position + moveDir.normalized * speed );
+                isMoving = true;
+            }
+            else{
+                isMoving = false;
+            }
         }
+        else{
+            isMoving = false;
+        }   
+        
     }
 
     // Update is called once per frame
