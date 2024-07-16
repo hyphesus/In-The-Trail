@@ -8,7 +8,7 @@ public class DashAudio : MonoBehaviour
     public PlayerController playerController;
     public float volume = 0.1f; // Volume control variable
     private AudioSource dashAudioSource;
-
+    private bool triggeredOnce;
     void Start()
     {
         dashAudioSource = gameObject.AddComponent<AudioSource>();
@@ -28,17 +28,16 @@ public class DashAudio : MonoBehaviour
 
         if (playerController.isDashing)
         {
-            if (!dashAudioSource.isPlaying)
+            
+            if (!dashAudioSource.isPlaying && !triggeredOnce)
             {
+                triggeredOnce =true;
                 dashAudioSource.Play();
             }
         }
-        else
-        {
-            if (dashAudioSource.isPlaying)
-            {
-                dashAudioSource.Stop();
-            }
+        else{
+            triggeredOnce =false;
         }
+
     }
 }
