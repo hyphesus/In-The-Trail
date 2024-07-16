@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public float dashDistance = 5f;
     public float dashSpeed = 12f;
     public float dashDuration = 0.5f; //dash time
-
+    private Vector3 backPedal = new Vector3(0.1f, 0f, 0.1f);
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         //isGrounded = Physics.CheckSphere(transform.position, groundDistance, groundMask);
-        //print(isGrounded);
+        print(isGrounded);
         if(!isDashing){
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
@@ -127,16 +127,20 @@ public class PlayerController : MonoBehaviour
         // Stop dashing
         isDashing = false;
     }
-    void OnCollisionExit(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Item")){
             rb.velocity = Vector3.zero;
+            rb.position = rb.position - player.forward*0.5f;
         }
-    }
-    void OnCollisionStay(Collision collision) {
-        if (collision.gameObject.CompareTag("Terrain")){
+        else if (collision.gameObject.CompareTag("Terrain")){
             isGrounded=true;
         }
     }
+    /*void OnCollisionStay(Collision collision) {
+        if (collision.gameObject.CompareTag("Terrain")){
+            isGrounded=true;
+        }
+    }*/
 }
 
