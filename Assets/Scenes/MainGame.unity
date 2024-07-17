@@ -729,7 +729,7 @@ GameObject:
   - component: {fileID: 134027854}
   - component: {fileID: 134027853}
   m_Layer: 0
-  m_Name: Button
+  m_Name: exitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1619,6 +1619,8 @@ MonoBehaviour:
   settingsPanel: {fileID: 365396938}
   uiCamera: {fileID: 715251446}
   playerCamera: {fileID: 1735518862}
+  sceneaudio: {fileID: 0}
+  scrollbar: {fileID: 0}
 --- !u!1 &371326274
 GameObject:
   m_ObjectHideFlags: 0
@@ -2705,6 +2707,8 @@ MonoBehaviour:
   gameMusic: {fileID: 8300000, guid: 022b8bcf0052e43cb9da476b4eebbe5d, type: 3}
   loopStartTime: 5
   loopEndTime: 35
+  scrollbar: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1001 &781940062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2959,7 +2963,7 @@ GameObject:
   - component: {fileID: 854924460}
   - component: {fileID: 854924459}
   m_Layer: 0
-  m_Name: Button
+  m_Name: settingsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3556,7 +3560,7 @@ GameObject:
   - component: {fileID: 1106423382}
   - component: {fileID: 1106423381}
   m_Layer: 0
-  m_Name: Button
+  m_Name: startButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4493,7 +4497,7 @@ GameObject:
   - component: {fileID: 1877566255}
   - component: {fileID: 1877566254}
   m_Layer: 0
-  m_Name: Scrollbar
+  m_Name: audioScrollbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4563,12 +4567,24 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1928944386}
   m_HandleRect: {fileID: 1928944385}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 0.074
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 365396940}
+        m_TargetAssemblyTypeName: Uistart, Assembly-CSharp
+        m_MethodName: ChangeAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1877566255
 MonoBehaviour:
   m_ObjectHideFlags: 0
