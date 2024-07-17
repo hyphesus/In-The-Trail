@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public float dashSpeed = 12f;
     public float dashDuration = 0.5f; //dash time
     public LayerMask collisionMask;
-    public float cameraDistance = 0.35f;
+    public float cameraDistance = 0.1f;
 
     // Start is called before the first frame update
     void Start()
@@ -137,6 +137,7 @@ public class PlayerController : MonoBehaviour
         {
             print("ray cast hit");
             rb.MovePosition(rb.position - player.forward * cameraDistance); // Adjust to a small offset from the hit point
+            rb.velocity = Vector3.zero;
         }
     }
     void OnCollisionEnter(Collision collision)

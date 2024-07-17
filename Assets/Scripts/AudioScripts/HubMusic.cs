@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MusicPlayer : MonoBehaviour
 {
     public AudioClip gameMusic; // Assign your game music audio clip in the inspector
     public float loopStartTime = 10f; // Start time of the loop segment in seconds
     public float loopEndTime = 20f; // End time of the loop segment in seconds
-
-    private AudioSource audioSource;
+    public Scrollbar scrollbar;
+    public AudioSource audioSource;
 
     void Start()
     {
@@ -15,7 +16,7 @@ public class MusicPlayer : MonoBehaviour
 
         // Assign the AudioClip to the AudioSource
         audioSource.clip = gameMusic;
-
+        audioSource.volume = scrollbar.value;
         // Play the audio
         audioSource.Play();
     }
