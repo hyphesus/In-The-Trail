@@ -70,14 +70,14 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            if(Input.GetKeyDown(KeyCode.W)){
+            /*if(Input.GetKeyDown(KeyCode.W)){
                 Vector3 frontJump = transform.forward + Vector3.up;
                 rb.AddForce(frontJump * jumpForce, ForceMode.Impulse);
             }
-            else{
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            else{*/
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
-            }
+            //}
             isGrounded =false;
         }
         
