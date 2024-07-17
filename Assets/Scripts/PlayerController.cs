@@ -23,11 +23,14 @@ public class PlayerController : MonoBehaviour
 
     public float dashCooldown = 0.5f; // Cooldown duration
     private float lastDashTime; // Last time the dash was executed
+    public bool isPaused = false;
+    public GameObject escMenu;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        escMenu.SetActive(false);
     }
 
     void FixedUpdate()
@@ -35,7 +38,7 @@ public class PlayerController : MonoBehaviour
         //isGrounded = Physics.CheckSphere(transform.position, groundDistance, groundMask);
         //print(isGrounded);
 
-        if(!isDashing){
+        if(!isDashing && !isPaused){
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
 
@@ -75,7 +78,7 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(frontJump * jumpForce, ForceMode.Impulse);
             }
             else{*/
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
             //}
             isGrounded =false;
@@ -103,6 +106,17 @@ public class PlayerController : MonoBehaviour
             else
             {
                 StartCoroutine(Dash(player.forward)); // Just Forward
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
             }
         }
         AdjustCameraPosition();
@@ -152,6 +166,21 @@ public class PlayerController : MonoBehaviour
         else if (collision.gameObject.CompareTag("Terrain")){
             isGrounded=true;
         }
+    }
+    public void Resume()
+    {
+        escMenu.SetActive(false);
+        Time.timeScale = 1f;
+        isPaused = false;
+        Cursor.visible = true;
+    }
+
+    void Pause()
+    {
+        escMenu.SetActive(true);
+        Time.timeScale = 0f;
+        isPaused = true;
+        Cursor.visible = false;
     }
     /*void OnCollisionStay(Collision collision) {
         if (collision.gameObject.CompareTag("Terrain")){

@@ -43,3 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: MainMenu
+    uniqueID: 2718350815
+    locked: 0
+  - name: EscMenu
+    uniqueID: 1328763103
+    locked: 0
