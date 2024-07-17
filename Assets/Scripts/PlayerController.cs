@@ -19,7 +19,10 @@ public class PlayerController : MonoBehaviour
     public float dashSpeed = 12f;
     public float dashDuration = 0.5f; //dash time
     public LayerMask collisionMask;
-    public float cameraDistance = 0.1f;
+    public float cameraDistance = 0.35f;
+
+    public float dashCooldown = 0.5f; // Cooldown duration
+    private float lastDashTime; // Last time the dash was executed
 
     // Start is called before the first frame update
     void Start()
@@ -78,7 +81,7 @@ public class PlayerController : MonoBehaviour
             isGrounded =false;
         }
         
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing && Time.time >= lastDashTime + dashCooldown)
         {
             // Check combinations of keys for dash direction
             if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
@@ -128,6 +131,7 @@ public class PlayerController : MonoBehaviour
 
         // Stop dashing
         isDashing = false;
+        lastDashTime = Time.time;
     }
     void AdjustCameraPosition()
     {
@@ -137,7 +141,6 @@ public class PlayerController : MonoBehaviour
         {
             print("ray cast hit");
             rb.MovePosition(rb.position - player.forward * cameraDistance); // Adjust to a small offset from the hit point
-            rb.velocity = Vector3.zero;
         }
     }
     void OnCollisionEnter(Collision collision)
