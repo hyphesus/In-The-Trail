@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Terrain
   - Item
+  - escMenu
   layers:
   - Default
   - TransparentFX
