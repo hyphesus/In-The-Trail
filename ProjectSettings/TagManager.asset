@@ -7,6 +7,7 @@ TagManager:
   - Terrain
   - Item
   - escMenu
+  - Spike
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Item
-  - 
+  - Dangerous
   - 
   - 
   - 
