@@ -7,7 +7,6 @@ public class StopUI : MonoBehaviour
 {
     public GameObject sceneaudio;
     public Scrollbar scrollbar;
-    public GameObject mainMenu;
     public GameObject gameState; // player.ispaused
     // Start is called before the first frame update
     public void ContinueGame(){

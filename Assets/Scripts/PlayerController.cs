@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour
         escMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
-        Cursor.visible = true;
+        Cursor.visible = false;
     }
 
     void Pause()
@@ -180,7 +180,7 @@ public class PlayerController : MonoBehaviour
         escMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
-        Cursor.visible = false;
+        Cursor.visible = true;
     }
     /*void OnCollisionStay(Collision collision) {
         if (collision.gameObject.CompareTag("Terrain")){
