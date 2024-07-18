@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12534,6 +12534,8 @@ MonoBehaviour:
     m_Bits: 0
   cameraDistance: 0.35
   dashCooldown: 0.5
+  isPaused: 0
+  escMenu: {fileID: 0}
 --- !u!114 &838704568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12549,6 +12551,7 @@ MonoBehaviour:
   player: {fileID: 838704569}
   cameraTransform: {fileID: 1184571833}
   cam_sensitivity: 2
+  Stopped: {fileID: 838704562}
 --- !u!4 &838704569
 Transform:
   m_ObjectHideFlags: 0
