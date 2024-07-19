@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4219,7 +4219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c50caa623d0849979adade10c0d7e1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: DesertDungeon
+  SceneName: MainGame
 --- !u!1001 &248077200
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21077,6 +21077,7 @@ MonoBehaviour:
   gameMusic: {fileID: 8300000, guid: 1d62831c6714249f7bd028349b7ebb8b, type: 3}
   delay: 20
   fadeDuration: 4
+  audioSource: {fileID: 0}
   scrollbar: {fileID: 1459231351}
 --- !u!1 &1237396974 stripped
 GameObject:
