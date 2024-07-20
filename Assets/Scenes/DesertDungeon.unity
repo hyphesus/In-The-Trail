@@ -66661,6 +66661,7 @@ GameObject:
   - component: {fileID: 2101420294}
   - component: {fileID: 2101420293}
   - component: {fileID: 2101420292}
+  - component: {fileID: 2101420297}
   - component: {fileID: 2101420291}
   - component: {fileID: 2101420290}
   m_Layer: 0
@@ -66731,7 +66732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashAudio: {fileID: 8300000, guid: cce1bdbc53d8c4d19940001061b77b0a, type: 3}
-  playerController: {fileID: 2101420294}
+  playerController: {fileID: 2101420297}
   volume: 0.2
 --- !u!114 &2101420293
 MonoBehaviour:
@@ -66768,17 +66769,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   speed: 0.04
-  isDashing: 0
   isMoving: 0
-  dashDistance: 5
-  dashSpeed: 12
-  dashDuration: 0.5
   collisionMask:
     serializedVersion: 2
     m_Bits: 0
   cameraDistance: 0.35
   cameraController: {fileID: 2101420295}
-  dashCooldown: 0.5
   isPaused: 0
   escMenu: {fileID: 538168676}
   easyMode: 0
@@ -66817,6 +66813,24 @@ Transform:
   - {fileID: 1194893408}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &2101420297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101420289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd8b1a8f0da72f43b2586a4303bb0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2101420296}
+  isDashing: 0
+  dashDistance: 5
+  dashSpeed: 12
+  dashDuration: 0.5
+  dashCooldown: 0.5
 --- !u!1001 &2107963083
 PrefabInstance:
   m_ObjectHideFlags: 0
