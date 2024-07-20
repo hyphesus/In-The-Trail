@@ -10,19 +10,6 @@ public class Health : MonoBehaviour
     public int maxHealth = 5; // Number of health units
     public int currentHealth;
 
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
     void Start()
     {
         currentHealth = maxHealth;
@@ -32,26 +19,24 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        print(currentHealth);
+        
         if (currentHealth < 0)
         {
             currentHealth = 0;
         }
+        print(currentHealth);
         UpdateHealthBar();
     }
 
     void UpdateHealthBar()
     {
-        for (int i = 0; i < healthSprites.Length; i++)
-        {
-            if (i < currentHealth)
-            {
-                healthSprites[i].enabled = true; // Show health unit
+        for (int i = 0; i < healthSprites.Length; i++){
+            if (currentHealth == i){
+                print(i);
+                healthSprites[i].enabled = true;
+                continue;
             }
-            else
-            {
-                healthSprites[i].enabled = false; // Hide health unit
-            }
+            healthSprites[i].enabled = false;
         }
     }
 }

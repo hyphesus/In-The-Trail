@@ -27,13 +27,14 @@ public class PlayerController : MonoBehaviour
     public bool isPaused = false;
     public GameObject escMenu;
     public bool easyMode;
+    private bool isTakingDamage = false;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         escMenu.SetActive(false);
         Time.timeScale = 1f;
-
+        health.SetActive(true);
     }
 
     void FixedUpdate()
@@ -169,11 +170,30 @@ public class PlayerController : MonoBehaviour
         else if (collision.gameObject.CompareTag("Terrain")){
             isGrounded=true;
         }
-        else if (collision.gameObject.CompareTag("Danger"))
+        else if (collision.gameObject.CompareTag("Spike") && !isTakingDamage)
+        {
+            StartCoroutine(ApplyContinuousDamage());
+        }
+
+    }
+    private void OnCollisionExit(Collision collision) {
+        if (collision.gameObject.CompareTag("Spike"))
         {
             print("damage taken");
-            health.GetComponent<Health>().TakeDamage(1); // Adjust damage value as needed
+            StopCoroutine(ApplyContinuousDamage());
+            isTakingDamage = false;
         }
+    }
+
+    IEnumerator ApplyContinuousDamage()
+    {
+        isTakingDamage = true;
+
+        yield return new WaitForSeconds(2f);
+
+        health.GetComponent<Health>().TakeDamage(1); 
+
+    
     }
     public void Resume()
     {
@@ -181,6 +201,7 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
         Cursor.visible = false;
+        health.SetActive(true);
     }
 
     void Pause()
@@ -189,6 +210,7 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 0f;
         isPaused = true;
         Cursor.visible = true;
+        health.SetActive(false);
     }
     /*void OnCollisionStay(Collision collision) {
         if (collision.gameObject.CompareTag("Terrain")){
