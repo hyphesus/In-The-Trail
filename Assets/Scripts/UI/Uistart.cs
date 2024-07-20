@@ -1,20 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class Uistart : MonoBehaviour
 {
     public GameObject settingsPanel;
-    public GameObject player;
     public Camera uiCamera;
-    public Camera playerCamera;
 
     void Start()
     {
         Cursor.visible = true;
-        playerCamera.gameObject.SetActive(false);
-        player.GetComponent<HubWalking>().enabled = false;
+
     }
 
     public void StartGame()
@@ -22,10 +18,19 @@ public class Uistart : MonoBehaviour
         // Deactivate UI camera and activate player camera
         Cursor.visible = false;
         uiCamera.gameObject.SetActive(false);
-        playerCamera.gameObject.SetActive(true);
-        player.GetComponent<HubWalking>().enabled = true;
+        StartCoroutine(LoadSceneAsync("MainGame"));
     }
 
+    private IEnumerator LoadSceneAsync(string sceneName)    
+    {
+        // Begin to load the Scene you specify
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
+        // Wait until the asynchronous scene fully loads
+        while (!asyncOperation.isDone)
+        {
+            yield return null;
+        }
+    }
     public void OpenSettings()
     {
         settingsPanel.SetActive(true);
