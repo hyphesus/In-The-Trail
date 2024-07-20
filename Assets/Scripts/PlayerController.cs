@@ -91,7 +91,6 @@ public class PlayerController : MonoBehaviour
             //}
             isGrounded = false;
         }
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
