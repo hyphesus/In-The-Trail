@@ -13,24 +13,13 @@ public class PlayerController : MonoBehaviour
     public float speed = 0.04f; // Movement speed
     private Rigidbody rb; // Reference to the Rigidbody component
     private bool isGrounded; // Is the player grounded
-<<<<<<< Updated upstream
-    public bool isDashing; // Is the player dashing
-
-=======
     
->>>>>>> Stashed changes
     public bool isMoving;
     
     public LayerMask collisionMask;
     public float cameraDistance = 0.35f;
-<<<<<<< Updated upstream
-    public CameraController cameraController;
-    public float dashCooldown = 0.5f; // Cooldown duration
-    private float lastDashTime; // Last time the dash was executed
-=======
 
     
->>>>>>> Stashed changes
     public bool isPaused = false;
     public GameObject escMenu;
     public bool easyMode;
@@ -41,11 +30,10 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         escMenu.SetActive(false);
         Time.timeScale = 1f;
-        if (health != null)
-        {
+        if(health != null){
             health.SetActive(true);
         }
-
+        
     }
 
     void FixedUpdate()
@@ -53,40 +41,33 @@ public class PlayerController : MonoBehaviour
         //isGrounded = Physics.CheckSphere(transform.position, groundDistance, groundMask);
         //print(isGrounded);
 
-<<<<<<< Updated upstream
-        if (!isDashing && !isPaused)
-        {
-=======
         if(!isPaused){
->>>>>>> Stashed changes
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
 
             // Combine the inputs to create a direction vector
             Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-
+            
             if (direction.magnitude >= 0.1f)
             {
                 // Calculate the angle to rotate the player based on the camera's rotation
                 float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + player.eulerAngles.y;
-
+    
                 Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
                 // Move the player
                 //transform.Translate(moveDir.normalized * speed, Space.World);
-                rb.MovePosition(transform.position + moveDir.normalized * speed);
+                rb.MovePosition(transform.position + moveDir.normalized * speed );
                 isMoving = true;
             }
-            else
-            {
+            else{
                 isMoving = false;
             }
         }
-        else
-        {
+        else{
             isMoving = false;
-        }
-
+        }   
+        
     }
 
     // Update is called once per frame
@@ -100,40 +81,12 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(frontJump * jumpForce, ForceMode.Impulse);
             }
             else{*/
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
             //}
-            isGrounded = false;
+            isGrounded =false;
         }
-<<<<<<< Updated upstream
-
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing && Time.time >= lastDashTime + dashCooldown)
-        {
-            // Check combinations of keys for dash direction
-            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
-            {
-                StartCoroutine(Dash(player.forward + player.right)); // Right-Forward
-            }
-            else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
-            {
-                StartCoroutine(Dash(player.forward - player.right)); // Left-Forward
-            }
-            else if (Input.GetKey(KeyCode.D))
-            {
-                StartCoroutine(Dash(player.right)); // Just Right
-            }
-            else if (Input.GetKey(KeyCode.A))
-            {
-                StartCoroutine(Dash(-player.right)); // Just Left
-            }
-            else
-            {
-                StartCoroutine(Dash(player.forward)); // Just Forward
-            }
-        }
-=======
         
->>>>>>> Stashed changes
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
@@ -160,14 +113,12 @@ public class PlayerController : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Item"))
-        {
+        if (collision.gameObject.CompareTag("Item")){
             rb.velocity = Vector3.zero;
-
+            
         }
-        else if (collision.gameObject.CompareTag("Terrain"))
-        {
-            isGrounded = true;
+        else if (collision.gameObject.CompareTag("Terrain")){
+            isGrounded=true;
         }
         else if (collision.gameObject.CompareTag("Spike") && !isTakingDamage)
         {
@@ -175,12 +126,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-<<<<<<< Updated upstream
-    private void OnCollisionStay(Collision collision)
-    {
-=======
     private void OnCollisionExit(Collision collision) {
->>>>>>> Stashed changes
         if (collision.gameObject.CompareTag("Spike"))
         {
             print("damage taken");
@@ -192,18 +138,11 @@ public class PlayerController : MonoBehaviour
     IEnumerator ApplyContinuousDamage()
     {
         isTakingDamage = true;
-<<<<<<< Updated upstream
-        while (true)
-        {
-            health.GetComponent<Health>().TakeDamage(1);
-            cameraController.ShakeCamera();
-=======
         while(isTakingDamage){
             health.GetComponent<Health>().TakeDamage(1); 
->>>>>>> Stashed changes
             yield return new WaitForSeconds(2f);
         }
-
+            
     }
     public void Resume()
     {
