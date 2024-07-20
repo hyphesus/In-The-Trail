@@ -10,6 +10,11 @@ public class StopUI : MonoBehaviour
     public Scrollbar scrollbar;
     public GameObject gameState; // player.ispaused
     // Start is called before the first frame update
+    public Toggle toggle;    
+
+    void Start(){
+        toggle.isOn = gameState.GetComponent<PlayerController>().easyMode;
+    }
     public void ContinueGame(){
         print("continue");
         gameState.GetComponent<PlayerController>().Resume();
@@ -24,6 +29,17 @@ public class StopUI : MonoBehaviour
         }
     }
     public void ExitGame(){
-        //SceneManager.LoadScene("StartMenu");
+        SceneManager.LoadScene("StartMenu");
+    }
+
+    public void EasyMode(){
+        if(toggle.isOn){
+            gameState.GetComponent<PlayerController>().easyMode = true;
+            gameState.GetComponent<PlayerController>().speed = 0.04f;
+        }
+        else{
+            gameState.GetComponent<PlayerController>().easyMode = true;
+            gameState.GetComponent<PlayerController>().speed = 0.05f;
+        }
     }
 }

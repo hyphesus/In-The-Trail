@@ -25,12 +25,14 @@ public class PlayerController : MonoBehaviour
     private float lastDashTime; // Last time the dash was executed
     public bool isPaused = false;
     public GameObject escMenu;
-
+    public bool easyMode = false;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         escMenu.SetActive(false);
+        Time.timeScale = 1f;
+
     }
 
     void FixedUpdate()
@@ -165,6 +167,11 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Terrain")){
             isGrounded=true;
+        }
+        else if (collision.gameObject.CompareTag("Danger"))
+        {
+            print("damage taken");
+            //HealthManager.instance.TakeDamage(1); // Adjust damage value as needed
         }
     }
     public void Resume()
