@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 5f; // Jump force
     public float groundDistance = 0.2f; // Distance to check for the ground
     public LayerMask groundMask; // Layer mask to specify what is ground
-    public float speed = 0.06f; // Movement speed
+    public float speed = 0.04f; // Movement speed
     private Rigidbody rb; // Reference to the Rigidbody component
     private bool isGrounded; // Is the player grounded
     public bool isDashing; // Is the player dashing
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     private float lastDashTime; // Last time the dash was executed
     public bool isPaused = false;
     public GameObject escMenu;
-    public bool easyMode = false;
+    public bool easyMode;
     // Start is called before the first frame update
     void Start()
     {
