@@ -5,7 +5,7 @@ using UnityEngine;
 public class DashAudio : MonoBehaviour
 {
     public AudioClip dashAudio; // Reference to the AudioSource component
-    public PlayerController playerController;
+    public Dash playerController;
     public float volume = 0.1f; // Volume control variable
     private AudioSource dashAudioSource;
     private bool triggeredOnce;
