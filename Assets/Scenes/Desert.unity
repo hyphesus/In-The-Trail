@@ -9394,6 +9394,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a13ad7106924640a690ba41e39b826eb, type: 3}
   m_PrefabInstance: {fileID: 604878586}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &606634205 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1565440585670487414, guid: 1a8bfa24145b80b44b50d20eb6d6a4df, type: 3}
+  m_PrefabInstance: {fileID: 1523405463}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &608403495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16338,7 +16343,7 @@ PrefabInstance:
     - target: {fileID: 8287841258591622995, guid: 1705aa6e38dea8c48a94841eb6dc8ba3, type: 3}
       propertyPath: gameState
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 606634205}
     - target: {fileID: 8287841258591622995, guid: 1705aa6e38dea8c48a94841eb6dc8ba3, type: 3}
       propertyPath: sceneaudio
       value: 
@@ -35257,6 +35262,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 3385872499768222932, guid: 3d2adaaf3939cbe40856d3d5e63d5683, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1009359627}
     - target: {fileID: 7479353459855973554, guid: 3d2adaaf3939cbe40856d3d5e63d5683, type: 3}
       propertyPath: m_LocalPosition.x
       value: 197.5319
