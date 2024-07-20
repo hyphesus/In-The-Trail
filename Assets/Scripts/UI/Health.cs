@@ -11,10 +11,12 @@ public class Health : MonoBehaviour
     public int currentHealth;
     public AudioSource audioSource; // AudioSource to play the sound
     public AudioClip damageClip; // Audio clip to play when health decreases
-
+    public Transform player;
+    private Vector3 InitialPoint;
     void Start()
     {
         currentHealth = maxHealth;
+        InitialPoint = player.transform.position;
         UpdateHealthBar();
     }
 
@@ -30,6 +32,10 @@ public class Health : MonoBehaviour
         PlayDamageSound(); // Play the sound whenever damage is taken
         print(currentHealth);
         UpdateHealthBar();
+        if (currentHealth == 0){
+            currentHealth = 4;
+            player.transform.position = InitialPoint;
+        }
     }
 
     void UpdateHealthBar()
