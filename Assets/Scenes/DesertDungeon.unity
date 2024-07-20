@@ -66777,6 +66777,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   cameraDistance: 0.35
+  cameraController: {fileID: 2101420295}
   dashCooldown: 0.5
   isPaused: 0
   escMenu: {fileID: 538168676}
