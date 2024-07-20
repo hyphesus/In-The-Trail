@@ -66646,9 +66646,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf38ee06e537974388174852a3b125a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingAudio: {fileID: 8300000, guid: 2f842f4b2b4698041ab03fbd8d29bd0a, type: 3}
+  walkingAudio: {fileID: 8300000, guid: b9f09efdb45a74e77aa2f0e704465d16, type: 3}
   playerController: {fileID: 2101420294}
-  volume: 0.2
+  volume: 0.1
 --- !u!114 &2101420294
 MonoBehaviour:
   m_ObjectHideFlags: 0
