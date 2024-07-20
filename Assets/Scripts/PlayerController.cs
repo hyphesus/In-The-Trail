@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb; // Reference to the Rigidbody component
     private bool isGrounded; // Is the player grounded
     public bool isDashing; // Is the player dashing
-
+    
     public bool isMoving;
     public float dashDistance = 5f;
     public float dashSpeed = 12f;
@@ -34,7 +34,10 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         escMenu.SetActive(false);
         Time.timeScale = 1f;
-        health.SetActive(true);
+        if(health != null){
+            health.SetActive(true);
+        }
+        
     }
 
     void FixedUpdate()
@@ -42,36 +45,33 @@ public class PlayerController : MonoBehaviour
         //isGrounded = Physics.CheckSphere(transform.position, groundDistance, groundMask);
         //print(isGrounded);
 
-        if (!isDashing && !isPaused)
-        {
+        if(!isDashing && !isPaused){
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
 
             // Combine the inputs to create a direction vector
             Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-
+            
             if (direction.magnitude >= 0.1f)
             {
                 // Calculate the angle to rotate the player based on the camera's rotation
                 float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + player.eulerAngles.y;
-
+    
                 Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
                 // Move the player
                 //transform.Translate(moveDir.normalized * speed, Space.World);
-                rb.MovePosition(transform.position + moveDir.normalized * speed);
+                rb.MovePosition(transform.position + moveDir.normalized * speed );
                 isMoving = true;
             }
-            else
-            {
+            else{
                 isMoving = false;
             }
         }
-        else
-        {
+        else{
             isMoving = false;
-        }
-
+        }   
+        
     }
 
     // Update is called once per frame
@@ -85,12 +85,12 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(frontJump * jumpForce, ForceMode.Impulse);
             }
             else{*/
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
             //}
-            isGrounded = false;
+            isGrounded =false;
         }
-
+        
         if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing && Time.time >= lastDashTime + dashCooldown)
         {
             // Check combinations of keys for dash direction
@@ -166,23 +166,20 @@ public class PlayerController : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Item"))
-        {
+        if (collision.gameObject.CompareTag("Item")){
             rb.velocity = Vector3.zero;
-
+            
         }
-        if (collision.gameObject.CompareTag("Terrain"))
-        {
-            isGrounded = true;
+        else if (collision.gameObject.CompareTag("Terrain")){
+            isGrounded=true;
         }
-        if (collision.gameObject.CompareTag("Spike") && !isTakingDamage)
+        else if (collision.gameObject.CompareTag("Spike") && !isTakingDamage)
         {
             StartCoroutine(ApplyContinuousDamage());
         }
 
     }
-    private void OnCollisionExit(Collision collision)
-    {
+    private void OnCollisionStay(Collision collision) {
         if (collision.gameObject.CompareTag("Spike"))
         {
             print("damage taken");
@@ -194,12 +191,11 @@ public class PlayerController : MonoBehaviour
     IEnumerator ApplyContinuousDamage()
     {
         isTakingDamage = true;
-
-        yield return new WaitForSeconds(2f);
-
-        health.GetComponent<Health>().TakeDamage(1);
-
-
+        while(true){
+            health.GetComponent<Health>().TakeDamage(1); 
+            yield return new WaitForSeconds(2f);
+        }
+            
     }
     public void Resume()
     {
