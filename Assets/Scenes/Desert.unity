@@ -4219,7 +4219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c50caa623d0849979adade10c0d7e1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: MainGame
+  SceneName: DesertDungeon
 --- !u!1001 &248077200
 PrefabInstance:
   m_ObjectHideFlags: 0
