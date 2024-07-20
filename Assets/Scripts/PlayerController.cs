@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     public Transform player; // Reference to the camera's transform
+    public GameObject health;
     public float jumpForce = 5f; // Jump force
     public float groundDistance = 0.2f; // Distance to check for the ground
     public LayerMask groundMask; // Layer mask to specify what is ground
@@ -171,7 +172,7 @@ public class PlayerController : MonoBehaviour
         else if (collision.gameObject.CompareTag("Danger"))
         {
             print("damage taken");
-            //HealthManager.instance.TakeDamage(1); // Adjust damage value as needed
+            health.GetComponent<Health>().TakeDamage(1); // Adjust damage value as needed
         }
     }
     public void Resume()

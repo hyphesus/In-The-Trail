@@ -35,11 +35,11 @@ public class StopUI : MonoBehaviour
     public void EasyMode(){
         if(toggle.isOn){
             gameState.GetComponent<PlayerController>().easyMode = true;
-            gameState.GetComponent<PlayerController>().speed = 0.04f;
+            gameState.GetComponent<PlayerController>().speed = 0.05f;
         }
         else{
-            gameState.GetComponent<PlayerController>().easyMode = true;
-            gameState.GetComponent<PlayerController>().speed = 0.05f;
+            gameState.GetComponent<PlayerController>().easyMode = false;
+            gameState.GetComponent<PlayerController>().speed = 0.04f;
         }
     }
 }

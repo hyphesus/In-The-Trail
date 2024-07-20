@@ -877,6 +877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 388479345}
+  health: {fileID: 0}
   jumpForce: 5
   groundDistance: 0.2
   groundMask:
