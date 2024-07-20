@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class StopUI : MonoBehaviour
 {
     public GameObject sceneaudio;
@@ -22,5 +22,8 @@ public class StopUI : MonoBehaviour
         else if(sceneaudio.GetComponent<DesertCityMusic>() != null){
             sceneaudio.GetComponent<DesertCityMusic>().audioSource.volume = scrollbar.value*0.4f;
         }
+    }
+    public void ExitGame(){
+        //SceneManager.LoadScene("StartMenu");
     }
 }
