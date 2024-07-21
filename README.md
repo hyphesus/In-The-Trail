@@ -13,8 +13,6 @@ Use W A S D to move around and SPACE to jump across platforms. Hit ESC for the p
 
 <img width="1024" alt="Screenshot 2024-07-21 at 03 46 39" src="https://github.com/user-attachments/assets/f3f6a050-647a-46ef-8f6d-2b4baf8c022d">
 
-<img width="1680" alt="Screenshot 2024-07-21 at 03 47 12" src="https://github.com/user-attachments/assets/e12a4246-b72c-4608-86fe-8d77e6870e42">
-
 <img width="1006" alt="Screenshot 2024-07-21 at 03 47 18" src="https://github.com/user-attachments/assets/cf7ab7c9-c983-4b44-a6ab-23f6f5933865">
 
 ## Updates
