@@ -17,3 +17,6 @@ Use W A S D to move around and SPACE to jump across platforms. Hit ESC for the p
 
 ## Updates
 The game is currently in demo. we will provide further updates and polishing to the final game. Thanks for trying our game out.
+
+## GDD
+Here's the link for GDD: https://docs.google.com/document/d/1xvfrOXKt2TmXUjVtNzPTrFLn3Q8dwhQTL1LstIy8ZFc/
