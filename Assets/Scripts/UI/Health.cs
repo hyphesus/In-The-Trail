@@ -35,7 +35,9 @@ public class Health : MonoBehaviour
         if (currentHealth == 0){
             currentHealth = 4;
             player.transform.position = InitialPoint;
+            UpdateHealthBar();
         }
+        
     }
 
     void UpdateHealthBar()
