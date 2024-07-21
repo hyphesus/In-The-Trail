@@ -2,15 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class Uistart : MonoBehaviour
 {
     public GameObject settingsPanel;
     public Camera uiCamera;
+    public AudioSource audioSource;
 
     void Start()
     {
         Cursor.visible = true;
 
+        // Play the audio source and set it to loop
+        if (audioSource != null)
+        {
+            audioSource.loop = true;
+            audioSource.Play();
+        }
     }
 
     public void StartGame()
@@ -21,7 +29,7 @@ public class Uistart : MonoBehaviour
         StartCoroutine(LoadSceneAsync("MainGame"));
     }
 
-    private IEnumerator LoadSceneAsync(string sceneName)    
+    private IEnumerator LoadSceneAsync(string sceneName)
     {
         // Begin to load the Scene you specify
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
@@ -31,6 +39,7 @@ public class Uistart : MonoBehaviour
             yield return null;
         }
     }
+
     public void OpenSettings()
     {
         settingsPanel.SetActive(true);
@@ -40,6 +49,7 @@ public class Uistart : MonoBehaviour
     {
         settingsPanel.SetActive(false);
     }
+
     public void ExitGame()
     {
         Application.Quit();
